@@ -49,9 +49,9 @@ floppy:
 	    cpmcp -f idpfdd $(FLOPPY) $(ROOT)/disk/CCP.COM 0:CCP.COM ; \
 	    rm -f ./diskdefs ; \
 	elif [ "$ $(SYS)" = "boot" ] ; then \
-        cp $(ROOT)/disk/boot.img $(FLOPPY) ; \
+	    cp $(ROOT)/disk/boot.img $(FLOPPY) ; \
 	elif [ "$ $(SYS)" = "bootg" ] ; then \
-        cp $(ROOT)/disk/bootg.img $(FLOPPY) ; \
+	    cp $(ROOT)/disk/bootg.img $(FLOPPY) ; \
 	else \
 	    cp $(DISKDEFS) . ; \
 	    mkfs.cpm -f idpfdd -t $(FLOPPY) ; \
