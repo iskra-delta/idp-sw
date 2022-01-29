@@ -1,7 +1,7 @@
 # Source files.
-SRC			=	$(wildcard *.c)
-OBJS		=	$(patsubst %.c,%.rel,$(SRC))
-TARGET		=	console
+SRC     =   $(wildcard *.c)
+OBJS    =   $(patsubst %.c,%.rel,$(SRC))
+TARGET  =   console
 
 # Rules.
 .PHONY: all
