@@ -4,35 +4,39 @@ Welcome to Iskra Delta Partner Software.
 
 ## Building
 
-### Prerequisites
+The build environment must be *Linux* with the following tools installed: *sdcc*, *cpmtools*, and *sed*. 
 
-The build environment must be *Linux* with the following tools installed: `sdcc,` `cpmtools,` and `sed.` 
+Produce a floppy image *fddb.img* in the *bin* directory with
 
-### Make
+`make` 
 
-**`make`** Builds this repository. The result is file `fddb.img` in the `bin` directory.
+Clean after the build with
 
-**`make clean`** Cleans this repository.
+`make clean`
 
-**`make install`** Copies `fddb.img` to target location. Current target location is the `~/Dex` folder. Modify the `Makefile` to change your target location or convert file using the [HxCFloppyEmulator](https://github.com/mgrcar/HxCFloppyEmulator).
+Copy the floppy image to target location with
 
-#### Additional make arguments
+`make install` 
 
-You can use the `SYS` argument to tell `Makefile` to create system disk.
+ > Current target location is the *~/Dex* directory. Modify the *Makefile* to change it or prepare your floppy image for the [HxCFloppyEmulator](https://github.com/mgrcar/HxCFloppyEmulator).
 
-**`make SYS=boot`** Creates the system disk for non graphical Partner.
+Use the `SYS` argument to tell *Makefile* to create a system floppy image. Create a system floppy image for non-graphical Partner with 
 
-**`make SYS=bootg`** Creates the system disk for graphical Partner.
+`make SYS=boot`
 
-**`make SYS=ccp`** Does not create system disk, but copies the `CCP.COM` shell to it.
+Create a system floppy image for graphical Partner with
+
+`make SYS=bootg` 
+
+Create a non-system floppy image with *CCP.COM* in user area 0 with
+
+`make SYS=ccp`
 
 ## Running the software on Partner
 
-You can download the emulator from here.
+If you do not own a real Iskra Delta Partner computer (*few of us do nowadays*), [download the emulator](http://matejhorvat.si/sl/slorac/delta/partner/index.htm)
 
-http://matejhorvat.si/sl/slorac/delta/partner/index.htm
-
-Inside the emulator, press Alt+O to attach your disk image (i.e. `fddb.img`). The emulator maps the attached disk as `B:` drive.
+Once inside the emulator, press Alt+O to attach your disk image (i.e. `fddb.img`). The emulator maps the attached disk as `B:` drive.
 
 ## Creating Disks Manually
 
