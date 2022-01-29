@@ -57,3 +57,9 @@ floppy:
 		mkfs.cpm -f idpfdd -t $(FLOPPY) ; \
 		rm -f ./diskdefs ; \
 	fi;
+
+# Uncomment your install option.
+.PHONY: install
+install: 
+	# hxcfe -uselayout:IDP -conv:HXC_HFE -finput:$(FLOPPY) -foutput:$(BIN_DIR)/fddb.hfe
+	cp $(FLOPPY) ~/Dex/fddb.img

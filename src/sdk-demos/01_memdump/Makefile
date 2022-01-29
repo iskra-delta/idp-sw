@@ -1,7 +1,7 @@
 # Source files.
 SRC			=	$(wildcard *.c)
 OBJS		=	$(patsubst %.c,%.rel,$(SRC))
-TARGET		=	01_mdump
+TARGET		=	memdump
 
 # Rules.
 .PHONY: all

@@ -1,5 +1,5 @@
 # Deliberately manual so that files can easily be excluded.
-SUBDIRS             =   00_hello 01_mdump
+SUBDIRS             =   00_hello 01_memdump
 
 # CP/M Area for SDK demos
 export USER_AREA    =   15
