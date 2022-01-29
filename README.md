@@ -1,3 +1,5 @@
+![status.badge] [![language.badge]][language.url] [![standard.badge]][standard.url] [![license.badge]][license.url]
+
 # idp-sw
 
 Welcome to Iskra Delta Partner Software.
@@ -20,7 +22,9 @@ Copy the floppy image to target location with
 
  > Current target location is the *~/Dex* directory. Modify the *Makefile* to change it or prepare your floppy image for the [HxCFloppyEmulator](https://github.com/mgrcar/HxCFloppyEmulator).
 
-Use the `SYS` argument to tell *Makefile* to create a system floppy image. Create a system floppy image for non-graphical Partner with 
+Use the `SYS` argument to tell *Makefile* to create a system floppy image. 
+
+Create a system floppy image for non-graphical Partner with 
 
 `make SYS=boot`
 
@@ -36,19 +40,18 @@ Create a non-system floppy image with *CCP.COM* in user area 0 with
 
 If you do not own a real Iskra Delta Partner computer (*few of us do nowadays*), [download the emulator](http://matejhorvat.si/sl/slorac/delta/partner/index.htm)
 
-Once inside the emulator, press Alt+O to attach your disk image (i.e. `fddb.img`). The emulator maps the attached disk as `B:` drive.
+Once inside the emulator, press **Alt+O** to attach your disk image (i.e. *fddb.img*). The emulator maps the attached disk as *B:* drive.
 
 ## Creating Disks Manually
 
-If you want to create custom Partner disks, we've prepared the necessary definitions for you to use with the `cpmtools` package.
-
-You can [download the package from here](http://www.moria.de/~michael/cpmtools/).
+If you want to create custom Partner disks, we've prepared the necessary definitions for you to use with the [*cpmtools* package](http://www.moria.de/~michael/cpmtools/).
 
 Disk definitions for Partner floppy and hard drives are in
-the `disk\diskdefs` file.
- * `idpfdd` for floppy drive
- * `idphdd` for the hard disk
-When running `cpmtools` programs, make sure the `diskdefs` file is in your current folder.
+the *disk\diskdefs* file.
+ * *idpfdd* for floppy drive
+ * *idphdd* for the hard disk
+
+ > When running *cpmtools* programs, make sure the *diskdefs* file is in your current folder.
 
 ### How to create a hard drive?
 
@@ -62,10 +65,21 @@ Note: `-f` is disk format and can be `idphdd` or `idpfdd`.
 
 ### How to add local files to disk?
 
-Following command adds file `hello.com` to area 0: of floppy drive `fddb.img`.
+Following command adds file *hello.com* to area 0: of floppy drive *fddb.img*.
 
 `cpmcp -f idpfdd fddb.img test.com 0:test.com`
 
 ### How to remove files from disk?
 
 `cpmrm -f idpfdd fddb.img 0:test.com`
+
+[language.url]:   https://en.wikipedia.org/wiki/ANSI_C
+[language.badge]: https://img.shields.io/badge/language-C-blue.svg
+
+[standard.url]:   https://en.wikipedia.org/wiki/C89/
+[standard.badge]: https://img.shields.io/badge/standard-C89-blue.svg
+
+[license.url]:    https://github.com/tstih/nice/blob/master/LICENSE
+[license.badge]:  https://img.shields.io/badge/license-MIT-blue.svg
+
+[status.badge]:  https://img.shields.io/badge/status-beta-orange.svg
