@@ -1,91 +1,67 @@
 # idp-sw
-Iskra Delta Partner Software
 
-  * [The test framework](#the-test-framework)
-- [Creating Disks Manually](#creating-disks-manually)
-  * [How to create a hard drive?](#how-to-create-a-hard-drive-)
-  * [How to create a floppy drive?](#how-to-create-a-floppy-drive-)
-  * [How to add local files to disk?](#how-to-add-local-files-to-disk-)
-  * [How to remove files from disk?](#how-to-remove-files-from-disk-)
-- [The Emulator](#the-emulator)
+Welcome to Iskra Delta Partner Software.
 
+## Building
 
-## The test framework
+### Prerequisites
 
-Automated unit tests use the [tiny test framework of Eric Radman](https://eradman.com/posts/tdd-in-c.html), 
-based on [the original MinUnit by John Brewer](http://www.jera.com/techinfo/jtns/jtn002.html). 
-The name of automated unit tests ends in `-test` (i.e. `std-test.com`).
+The build environment must be *Linux* with the following tools installed: `sdcc,` `cpmtools,` and `sed.` 
 
-# Creating Disks Manually
+### Make
 
-If you want to create custom Partner disks, we've prepared the necessary 
-definitions for you to use with the `cpmtools` package.
+**`make`** Builds this repository. The result is file `fddb.img` in the `bin` directory.
 
-You can download the package from here.
+**`make clean`** Cleans this repository.
 
-http://www.moria.de/~michael/cpmtools/
+**`make install`** Copies `fddb.img` to target location. Current target location is the `~/Dex` folder. Modify the `Makefile` to change your target location or convert file using the [HxCFloppyEmulator](https://github.com/mgrcar/HxCFloppyEmulator).
 
-Disk definitions for Partner floppy and hard drives are in
-the `scripts\diskdefs` file.
- * `idpfdd` for floppy drive
- * `idphdd` for the hard disk
+#### Additional make arguments
 
-## How to create a hard drive?
+You can use the `SYS` argument to tell `Makefile` to create system disk.
 
-Note: `-f` is disk format and can be `idphdd` or `idpfdd`.
+**`make SYS=boot`** Creates the system disk for non graphical Partner.
 
-`mkfs.cpm.exe -f idphdd -t hdda.img`
+**`make SYS=bootg`** Creates the system disk for graphical Partner.
 
-## How to create a floppy drive?
+**`make SYS=ccp`** Does not create system disk, but copies the `CCP.COM` shell to it.
 
-`mkfs.cpm.exe -f idpfdd -t fddb.img`
-
-## How to add local files to disk?
-
-Following command adds file `hello.com` to area 0: of floppy drive `fddb.img`.
-
-`cpmcp -f idpfdd fddb.img test.com 0:test.com`
-
-## How to remove files from disk?
-
-`cpmrm -f idpfdd fddb.img 0:test.com`
-
-
-#### Other make targets
-
-For comfortable work, you can also use the following targets. Each
-of them creates a `bin` folder copies the `.com,` `.lib` and `crt0cpm.rel` 
-files into it. And then creates an image of the floppy disk called 
-`fddb.img` with all the `.com` files to the floppy image, 
-   
-
- * `make install` Create the `bin` folder and standard floppy (with `.com` files).
- * `make ccp` Add `ccp.com` to the floppy. CP/M allows programs to overwrite its'
-   command shell called the CCP. When the program ends, the CP/M reloads the shell
-   and, if not present on the disk, displays an error (prompts for disk change). 
- * `make boot` Uses a bootable floppy for *std. partner* as a base for creating
-   the disk image. 
- * `make bootg` Uses a bootable floppy for *graphical partner* as a base for
-   creating the disk image
- * `make dex` Calls `make install` and copies the floppy image to a user
-   folder (`~/Dex/`). Use this if you work in *Linux* and need to exchange 
-   the image with another environment (i.e., a *Windows* where the emulator
-   is running). *In case you wonder, dex stands for Data EXchange.*
-   
-   All output will go to the `build` folder. Disk image that you 
-can import into the Partner emulator (using **Alt+O**) is called `fddb.img`.
-
-
-
-# The Emulator
+## Running the software on Partner
 
 You can download the emulator from here.
 
 http://matejhorvat.si/sl/slorac/delta/partner/index.htm
 
-Inside the emulator, press Alt+O to attach your disk image. 
-The emulator maps the attached disk as `B:` drive.
+Inside the emulator, press Alt+O to attach your disk image (i.e. `fddb.img`). The emulator maps the attached disk as `B:` drive.
 
+## Creating Disks Manually
 
-At present, the build environment is *Linux* with the following tools installed: 
-`sdcc,` `cpmtools,` `gcc,` and `sed.` 
+If you want to create custom Partner disks, we've prepared the necessary definitions for you to use with the `cpmtools` package.
+
+You can [download the package from here](http://www.moria.de/~michael/cpmtools/).
+
+Disk definitions for Partner floppy and hard drives are in
+the `disk\diskdefs` file.
+ * `idpfdd` for floppy drive
+ * `idphdd` for the hard disk
+When running `cpmtools` programs, make sure the `diskdefs` file is in your current folder.
+
+### How to create a hard drive?
+
+Note: `-f` is disk format and can be `idphdd` or `idpfdd`.
+
+`mkfs.cpm.exe -f idphdd -t hdda.img`
+
+### How to create a floppy drive?
+
+`mkfs.cpm.exe -f idpfdd -t fddb.img`
+
+### How to add local files to disk?
+
+Following command adds file `hello.com` to area 0: of floppy drive `fddb.img`.
+
+`cpmcp -f idpfdd fddb.img test.com 0:test.com`
+
+### How to remove files from disk?
+
+`cpmrm -f idpfdd fddb.img 0:test.com`
