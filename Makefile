@@ -43,5 +43,17 @@ clean: $(IDP_DEV) $(SUBDIRS)
 
 .PHONY: floppy
 floppy:
-	cp $(DISKDEFS) .
-	mkfs.cpm -f idpfdd -t $(FLOPPY)
+	if [ "$ $(SYS)" = "ccp" ] ; then \
+		cp $(DISKDEFS) . ; \
+		mkfs.cpm -f idpfdd -t $(FLOPPY) ; \
+		cpmcp -f idpfdd $(FLOPPY) $(ROOT)/disk/CCP.COM 0:CCP.COM ; \
+		rm -f ./diskdefs ; \
+	elif [ "$ $(SYS)" = "boot" ] ; then \
+    	cp $(ROOT)/disk/boot.img $(FLOPPY) ; \
+	elif [ "$ $(SYS)" = "bootg" ] ; then \
+    	cp $(ROOT)/disk/bootg.img $(FLOPPY) ; \
+	else \
+		cp $(DISKDEFS) . ; \
+		mkfs.cpm -f idpfdd -t $(FLOPPY) ; \
+		rm -f ./diskdefs ; \
+	fi;
