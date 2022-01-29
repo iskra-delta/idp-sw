@@ -1,0 +1,21 @@
+# Output and SDK directories.
+bin/
+sdk/
+
+# SDCC output files (just in case)
+*.cdb 
+*.ihx 
+*.lk 
+*.map 
+*.noi 
+*.rel 
+*.link 
+*.sym 
+*.lst 
+*.adb 
+*.asm
+*.img           
+!boot.img       
+!bootg.img      
+*.com           
+!ccp.com
