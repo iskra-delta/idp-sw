@@ -9,24 +9,24 @@ export LIB_DIR		=	$(SDK_DIR)/lib
 export CRT0         =   $(LIB_DIR)/crt0cpm3-z80
 
 # Globa settings: tools.
-export CC			=	sdcc
-export CFLAGS		=	--std-c11 -mz80 -I. -I./include $(addprefix -I,$(INC_DIR)) \
-						--no-std-crt0 --nostdinc --nostdlib --debug \
-						-D SLIM=$(SLIM) -D PLATFORM=$(PLATFORM)
-export AS			=	sdasz80
-export ASFLAGS		=	-xlos -g
-export AR			=	sdar
-export ARFLAGS		=	-rc
+export CC           =   sdcc
+export CFLAGS       =   --std-c11 -mz80 -I. -I./include $(addprefix -I,$(INC_DIR)) \
+                        --no-std-crt0 --nostdinc --nostdlib --debug \
+                        -D SLIM=$(SLIM) -D PLATFORM=$(PLATFORM)
+export AS           =   sdasz80
+export ASFLAGS      =   -xlos -g
+export AR           =   sdar
+export ARFLAGS      =   -rc
 export LD           =   sdcc
 export LDFLAGS      =   -mz80 -Wl -y \
                         --code-loc 0x100 \
-						--no-std-crt0 --nostdlib --nostdinc \
+                        --no-std-crt0 --nostdlib --nostdinc \
                         $(addprefix -L,$(LIB_DIR)) \
-						-llibsdcc-z80 \
-						-llibcpm3-z80 \
-						-llibpartner \
-						-llibgpx \
-						-llibtiles -p
+                        -llibsdcc-z80 \
+                        -llibcpm3-z80 \
+                        -llibpartner \
+                        -llibgpx \
+                        -llibtiles -p
 export OBJCOPY      =   sdobjcopy
 
 # Data segment fix (relink due to SDCC bug)
@@ -46,7 +46,7 @@ clean: $(SUBDIRS)
 .PHONY: $(SUBDIRS)
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS) \
-		PLATFORM=partner \
-		SLIM=$(SLIM) \
-		SDK_DIR=$(SDK_DIR) \
-		FLOPPY=$(FLOPPY)
+	    PLATFORM=partner \
+	    SLIM=$(SLIM) \
+	    SDK_DIR=$(SDK_DIR) \
+	    FLOPPY=$(FLOPPY)
