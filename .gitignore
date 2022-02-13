@@ -19,3 +19,7 @@ sdk/
 !bootg.img      
 *.com           
 !ccp.com
+
+# VSS
+.vscode/
+.vs/
