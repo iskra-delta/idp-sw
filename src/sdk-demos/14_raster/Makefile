@@ -1,7 +1,7 @@
 # Source files.
 SRC     =   $(wildcard *.c)
 OBJS    =   $(patsubst %.c,%.rel,$(SRC))
-TARGET  =   aids
+TARGET  =   raster
 
 # Rules.
 .PHONY: all
@@ -19,7 +19,7 @@ $(TARGET).ihx: $(OBJS)
 	$(L2) $(L2FLAGS) $(TARGET).link
 
 %.rel: %.c
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS) --disable-warning 261
 
 .PHONY: clean
 clean:

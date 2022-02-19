@@ -11,7 +11,6 @@
  */
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 
 #include <gpx.h>
 
@@ -19,7 +18,7 @@
 
 int main() {
 
-    srand(time(NULL));   
+    srand(1234);   
 
     /* enter gpx mode */
     gpx_t *g=gpx_init();
