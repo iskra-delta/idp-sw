@@ -15,7 +15,7 @@
 
 #include <gpx.h>
 
-#include "oldwiz.h"
+#include "chicago.h"
 
 char* text[] = {"Ozracje je mracno,",
                 "vreme oblacno.",
@@ -45,7 +45,7 @@ int main() {
     gpx_draw_rect(g,&clip_area);
 
     /* raster glyphs and fonts... */
-    font_t *font=(font_t *)&oldwiz_font;
+    font_t *font=(font_t *)&chicago_font;
     int y=32,x=36;
     for (unsigned int i=0;i<sizeof(text)/sizeof(char*);i++) {
         gpx_draw_string(g,font,x,y,text[i]);

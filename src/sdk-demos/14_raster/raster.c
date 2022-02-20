@@ -15,13 +15,13 @@
 
 #include <gpx.h>
 
-#include "dagger.h"
+#include "idp8x16.h"
 
 char* text[] = {"Ozracje je mracno,",
                 "vreme oblacno.",
                 "Vesoljni potop je ze mimo.",
                 "A glej zla usoda...",
-                "...je prava nadloga,"
+                "...je prava nadloga,",
                 "in spet se pripravlja ta dan --",
                 "ko svet bo porusen, pregnan!",
                 "Svetilka in kompas",
@@ -45,7 +45,7 @@ int main() {
     gpx_draw_rect(g,&clip_area);
 
     /* raster glyphs and fonts... */
-    font_t *font=(font_t *)&dagger_font;
+    font_t *font=(font_t *)&idp8x16_font;
     int y=32,x=36;
     for (unsigned int i=0;i<sizeof(text)/sizeof(char*);i++) {
         gpx_draw_string(g,font,x,y,text[i]);
