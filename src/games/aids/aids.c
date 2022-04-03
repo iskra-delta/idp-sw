@@ -27,54 +27,55 @@
 
 /* ----- vector shapes ----------------------------------------------------- */
 static uint8_t _la1[] = {               /* large asteroid 1 */
-	22, 2,   27,13,   46, 4,   61,13,   
-	56,29,   61,39,   61,43,   43,58,   
-	38,55,   21,61,   11,50,   02,30,   
-	06,25,   02,20,    7,10
+	22, 2,  46, 4, 
+	61,39,  38,55, 
+	06,25,  7,10
 };
 static const int _la1_len=sizeof(_la1);
 
 static uint8_t _la2[] = {               /* large asteroid 2 */
-	42,00,   59,14,   61,35,   43,60,   
-	32,58,   16,61,   01,44,    8,34,   
-	01,17,   21, 8,   34,26
+	42,00,   61,35,   
+    43,60,   01,44,    
+    8,34,    21, 8
 };
 static const int _la2_len=sizeof(_la2);
 
 static uint8_t _ma1[] = {               /* medium asteroid 1 */
-	24, 1,   28, 6,   33,11,   37,13,
-	32,19,   35,24,   38,27,   24,38,
- 	20,38,   12,34,    1,20,   11, 4
+	24, 1,  33,11,   
+	32,19,  38,27,   	
+    20,38,  1,20
 };
 static const int _ma1_len=sizeof(_ma1);
 
 static uint8_t _ma2[] = {               /* medium asteroid 2 */
-	13, 1,   18, 8,   20, 8,   29, 2,
-	38, 8,   36,19,   39,27,   28,36,
-	24,33,   16,38,    8,31,   05,25,
-	 4,18,    5,16,    3,11,   05, 7
+	13, 1,  29, 2,
+	38, 8,  24,33,    
+    8,31,   3,11
 };
 static const int _ma2_len=sizeof(_ma2);
 
 static uint8_t _sa1[] = {               /* small asteroid 1 */
-	 8, 1,   14, 1,   20, 8,   18,12,
-	21,16,   12,24,    0,13,    0,11,
- 	 5, 3
+	 8, 1,  18,12,
+	21,16,  12,24,    
+     0,11,  5, 3
 };
 static const int _sa1_len=sizeof(_sa1);
 
 static uint8_t _sa2[] = {               /* small asteroid 2 */
-	 9, 1,   15, 1,   16, 7,   22,11,
-	20,18,   12,23,    9,17,    5,21,
-	 0,17,    0,14,    4,10,    5, 3
+	 9, 1,   22,11,
+	20,18,   12,23,   
+	 0,17,   5, 3
 };
 static const int _sa2_len=sizeof(_sa2);
+
+
+
 
 
 /* ----- game objects  ----------------------------------------------------- */
 #define MARGIN_FRAC_H   32              /* (screen) margin is 1/8 of height */
 #define INIT_ASTEROIDS   4              /* number of initial (large) asteroids */
-#define MAX_SPEED        5              /* 5 - 10 */
+#define MAX_SPEED        4              /* 5 - 10 */
 #define LARGE_ASIZE     60              /* large ast size, divide by 2 for smaller */
 
 

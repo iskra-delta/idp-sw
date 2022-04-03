@@ -35,7 +35,7 @@ export L2FLAGS      =   -nf
 export L2FIX        =   sed '/-b _DATA = 0x8000/d'
 
 # Deliberately manual so that files can easily be excluded.
-SUBDIRS             =   sdk-demos games
+SUBDIRS             =   sdk-demos games apps
 
 .PHONY: all
 all: $(SUBDIRS)

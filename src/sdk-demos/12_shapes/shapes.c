@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdint.h>
 
+#include <partner.h>
 #include <gpx.h>
 
 #define LINE_X0 100
@@ -21,12 +22,19 @@
 
 int main() {
 
+    /* text mode off */
+    clrscr();
+    setcursortype(NOCURSOR);
+
     /* enter gpx mode */
     gpx_t *g=gpx_init();
     if (g==NULL) {
         printf("Can't enter graphics mode.\n");
         return 1;
     }
+
+    /* clear graphics */
+    gpx_cls(g);
 
     /* first line */
     int y=10, stepy=10, lines=3, i;
@@ -92,6 +100,10 @@ int main() {
 
     /* leave gpx mode */
     gpx_exit(g);
+
+    /* text mode on */
+    setcursortype(NORMALCURSOR);
+    clrscr();
 
     return 0;
 }
