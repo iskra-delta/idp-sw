@@ -1,5 +1,5 @@
 # Deliberately manual so that files can easily be excluded.
-SUBDIRS             =   lunatik
+SUBDIRS             =  
 
 # CP/M Area for SDK demos
 export USER_AREA    =   14
